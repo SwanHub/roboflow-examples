@@ -32,7 +32,6 @@ export default function GlobalDropzone({
   const handleDragLeave = useCallback((e: React.DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    // Only set to false if we're leaving the entire dropzone
     if (e.currentTarget === e.target) {
       setIsDragOver(false);
       setDragPreview(null);
@@ -61,7 +60,6 @@ export default function GlobalDropzone({
       e.preventDefault();
       e.stopPropagation();
 
-      // Get file info for preview
       const files = Array.from(e.dataTransfer.files);
       const imageFile = files.find((file) => file.type.startsWith("image/"));
 

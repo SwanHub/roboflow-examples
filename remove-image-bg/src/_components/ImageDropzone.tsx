@@ -19,7 +19,6 @@ export default function ImageDropzone({ onImageSelect }: ImageDropzoneProps) {
         onImageSelect(file);
       }
     }
-    // Reset the input value so the same file can be selected again
     if (fileInputRef.current) {
       fileInputRef.current.value = "";
     }

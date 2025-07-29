@@ -23,7 +23,6 @@ export default function Home() {
     }
     console.log("Image dropped:", file.name);
 
-    // 1. Check that it's a qualifying image type
     const validImageTypes = [
       "image/jpeg",
       "image/jpg",
@@ -35,15 +34,12 @@ export default function Home() {
       return;
     }
 
-    // Set the file immediately to show ImageEditor
     setDroppedFile(file);
 
-    // 2. Convert to base64
     const base64 = await new Promise<string>((resolve, reject) => {
       const reader = new FileReader();
       reader.onload = () => {
         const result = reader.result as string;
-        // Remove the data:image/...;base64, prefix
         const base64Data = result.split(",")[1];
         resolve(base64Data);
       };
@@ -51,7 +47,6 @@ export default function Home() {
       reader.readAsDataURL(file);
     });
 
-    // 3. Send to backend
     setIsProcessing(true);
     try {
       const response = await fetch("/api/remove-bg", {

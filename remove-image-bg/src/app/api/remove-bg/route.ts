@@ -39,7 +39,6 @@ export async function POST(request: NextRequest) {
     const result = await response.json();
     console.log(result);
 
-    // Extract the processed image from the result
     const processedImage = result.outputs?.[0]?.annotated_image;
 
     if (!processedImage) {
