@@ -38,7 +38,7 @@ A Next.js application that automatically removes backgrounds from images using R
 
    - Sign up at [Roboflow](https://roboflow.com)
    - Navigate to your [API key page](https://docs.roboflow.com/developer/authentication/find-your-roboflow-api-key)
-   - Copy your API key
+   - Copy your Private API key
 
 4. **Run the development server**
 
