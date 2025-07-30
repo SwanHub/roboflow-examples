@@ -90,7 +90,6 @@ export default function ImageEditor({
               zoom={zoom}
               handleDownload={handleDownload}
               onToggleOriginal={onToggleOriginal}
-              showOriginal={showOriginal}
               onReset={onReset}
             />
           </div>
@@ -107,7 +106,6 @@ interface ControlsProps {
   isProcessing: boolean;
   zoom: number;
   handleDownload: () => void;
-  showOriginal: boolean;
   onReset?: () => void;
 }
 
@@ -118,7 +116,6 @@ const Controls = ({
   isProcessing,
   zoom,
   handleDownload,
-  showOriginal,
   onReset,
 }: ControlsProps) => {
   return (

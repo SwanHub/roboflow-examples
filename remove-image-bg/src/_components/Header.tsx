@@ -4,6 +4,7 @@ import { RoboflowLogo } from "@/components/shared/RoboflowLogo";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 import { useState } from "react";
 import ApiKeyModal from "./ApiKeyModal";
+import CloneRepoButton from "./CloneRepoButton";
 
 interface HeaderProps {
   apiKey: string;
@@ -57,10 +58,10 @@ export default function Header({
               )}
             </button>
           </div>
+          <CloneRepoButton />
         </div>
       </div>
 
-      {/* API Key Modal */}
       {onShowApiKeyModal && (
         <ApiKeyModal
           isOpen={showApiKeyModal}

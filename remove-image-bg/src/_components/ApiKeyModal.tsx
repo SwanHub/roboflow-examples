@@ -57,7 +57,6 @@ export default function ApiKeyModal({
             </p>
           </div>
 
-          {/* API Key Input */}
           <div className="space-y-2 pb-4">
             <label
               htmlFor="modal-api-key"

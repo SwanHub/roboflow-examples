@@ -45,7 +45,6 @@ export default function ImageDropzone({ onImageSelect }: ImageDropzoneProps) {
         </button>
       </div>
 
-      {/* Alternative upload options */}
       <div className="text-center space-y-1 pb-12 sm:pb-16">
         <p className="text-gray-600 font-semibold text-lg sm:text-xl">
           or drop a file,

@@ -66,7 +66,6 @@ export default function Home() {
       }
 
       const result = await response.json();
-      console.log("Background removal result:", result);
 
       if (result.success && result.processedImage) {
         const dataUrl = `data:image/png;base64,${result.processedImage.value}`;

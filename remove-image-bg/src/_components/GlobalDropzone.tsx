@@ -81,10 +81,7 @@ export default function GlobalDropzone({
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
     >
-      {/* Main content */}
       {children}
-
-      {/* Drop overlay */}
       {isDragOver && (
         <div
           className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center"
@@ -93,19 +90,16 @@ export default function GlobalDropzone({
           onDragLeave={handleDragLeave}
           onDrop={handleDrop}
         >
-          {/* Corner brackets */}
           <div className="absolute top-4 left-4 w-8 h-8 border-l-4 border-t-4 border-white rounded-tl-lg"></div>
           <div className="absolute top-4 right-4 w-8 h-8 border-r-4 border-t-4 border-white rounded-tr-lg"></div>
           <div className="absolute bottom-4 left-4 w-8 h-8 border-l-4 border-b-4 border-white rounded-bl-lg"></div>
           <div className="absolute bottom-4 right-4 w-8 h-8 border-r-4 border-b-4 border-white rounded-br-lg"></div>
 
-          {/* Central content */}
           <div className="text-center space-y-4">
             <h2 className="text-4xl font-bold text-white">
               Drop image anywhere
             </h2>
 
-            {/* File preview */}
             {dragPreview && (
               <div className="mt-6">
                 <div className="inline-block bg-white rounded-lg p-2 shadow-lg">

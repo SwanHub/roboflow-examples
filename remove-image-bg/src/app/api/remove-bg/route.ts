@@ -37,10 +37,7 @@ export async function POST(request: NextRequest) {
     }
 
     const result = await response.json();
-    console.log(result);
-
     const processedImage = result.outputs?.[0]?.annotated_image;
-
     if (!processedImage) {
       return NextResponse.json(
         { error: "No processed image found in response" },
