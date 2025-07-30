@@ -1,8 +1,8 @@
 "use client";
 
-import { RoboflowLogo } from "@/components/shared/RoboflowLogo";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 import { useState } from "react";
+import { RoboflowLogo } from "@/components/shared/RoboflowLogo";
 import ApiKeyModal from "./ApiKeyModal";
 import CloneRepoButton from "./CloneRepoButton";
 
