@@ -52,8 +52,8 @@ export default function ApiKeyModal({
             </h2>
 
             <p className="text-gray-600 leading-relaxed">
-              To test the Remove Image Background template, provide your
-              Roboflow API key.
+              To test the Remove Not Hotdog template, provide your Roboflow API
+              key.
             </p>
           </div>
 
