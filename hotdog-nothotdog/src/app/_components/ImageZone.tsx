@@ -408,7 +408,7 @@ const Overlay_Camera = ({
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [isCameraActive, setIsCameraActive] = useState(false);
+  const [, setIsCameraActive] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -441,30 +441,8 @@ const Overlay_Camera = ({
         setIsLoading(false);
         setError(null);
       }
-    } catch (err: any) {
-      let errorMessage = "Unable to start camera";
-
-      // Handle specific error cases
-      if (
-        err.name === "NotAllowedError" ||
-        err.name === "PermissionDeniedError"
-      ) {
-        errorMessage =
-          "Camera permission was denied. Please allow camera access and try again.";
-      } else if (
-        err.name === "NotFoundError" ||
-        err.name === "DevicesNotFoundError"
-      ) {
-        errorMessage =
-          "No camera found. Please make sure your device has a working camera.";
-      } else if (
-        err.name === "NotReadableError" ||
-        err.name === "TrackStartError"
-      ) {
-        errorMessage =
-          "Camera is in use by another application. Please close other apps using the camera.";
-      }
-
+    } catch (err) {
+      const errorMessage = "Unable to start camera";
       setError(errorMessage);
       setIsLoading(false);
       console.error("Camera error:", err);
