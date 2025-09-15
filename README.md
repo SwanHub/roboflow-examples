@@ -20,7 +20,7 @@ Live demo websites powered by [Roboflow Templates](https://templates.roboflow.co
 2. **Choose a template** and navigate to its directory
 
    ```bash
-   cd remove-image-bg
+   cd repo-name-here
    ```
 
 3. **Install dependencies**
@@ -31,8 +31,8 @@ Live demo websites powered by [Roboflow Templates](https://templates.roboflow.co
 
 4. **Test locally**
 
-   - Get your API key from [Roboflow](https://docs.roboflow.com/developer/authentication/find-your-roboflow-api-key)
-   - Add it to your environment variables.
+   - Get your API key from Roboflow. [Instructions to find your API Key](https://docs.roboflow.com/developer/authentication/find-your-roboflow-api-key).
+   - Create a `.env.local` file and input there `ROBOFLOW_API_KEY=[YOUR_KEY_HERE]`
 
 5. **Run the development server**
 
