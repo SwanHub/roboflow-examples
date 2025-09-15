@@ -1,10 +1,12 @@
 # Roboflow Templates
 
-Full-stack computer vision apps powered by Roboflow, open-sourced and ready for deployment.
+Live demo websites powered by [Roboflow Templates](https://templates.roboflow.com).
 
-## Available Templates
+## List of sites
 
-- **[Remove Image Background](./remove-image-bg/)** - Automatically remove backgrounds from images using AI
+- **[Remove Image Background](./remove-image-bg/)** - Automatically remove backgrounds from images using AI. Clone of the well-known site [remove.bg](https://remove.bg).
+- **[Face Detection Test](./face-detection-test/)** - Simple Nextjs site to detect faces in an image. Upload an image and see the result.
+- **[Hot dog / Not hot dog](./hotdog-nothotdog/)** - Classify an image as "hot dog" or "not hot dog". Based on the Silicon Valley show meme.
 
 ## Getting Started
 
@@ -27,10 +29,10 @@ Full-stack computer vision apps powered by Roboflow, open-sourced and ready for 
    npm install
    ```
 
-4. **Set up your Roboflow API key**
+4. **Test locally**
 
    - Get your API key from [Roboflow](https://docs.roboflow.com/developer/authentication/find-your-roboflow-api-key)
-   - Add it to your environment variables or use it directly in the app
+   - Add it to your environment variables.
 
 5. **Run the development server**
 
@@ -41,15 +43,8 @@ Full-stack computer vision apps powered by Roboflow, open-sourced and ready for 
 6. **Deploy to Vercel** (recommended)
    - Connect your GitHub repository to [Vercel](https://vercel.com)
    - Add your Roboflow API key as an environment variable
-   - Deploy with one click
-
-## Tech Stack
-
-- **Frontend**: Next.js 14, React, TypeScript, Tailwind CSS
-- **Backend**: Next.js API Routes
-- **AI**: Roboflow Inference API
-- **Deployment**: Vercel (recommended)
+   - Click "deploy"
 
 ## Contributing
 
-We welcome contributions! Please feel free to submit a Pull Request.
+We welcome contributions! Please feel free to submit a new template via Pull Request.
