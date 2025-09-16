@@ -74,7 +74,7 @@ export default function GlobalDropzone({
   );
 
   return (
-    <div
+    <main
       className="relative min-h-screen"
       onDragOver={handleDragOver}
       onDragEnter={handleDragEnter}
@@ -125,6 +125,6 @@ export default function GlobalDropzone({
           </div>
         </div>
       )}
-    </div>
+    </main>
   );
 }

@@ -77,7 +77,7 @@ export default function Home() {
 
   return (
     <GlobalDropzone onImageDrop={handleFileSelect}>
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-white pb-24">
         {droppedFile ? (
           <div className="pt-16">
             <ImageEditor
