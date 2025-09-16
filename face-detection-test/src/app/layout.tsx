@@ -12,7 +12,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Roboflow Example App: Face Detection",
-  description: "Test app using Roboflow, Next.js and Supabase",
+  description: "Simple app to detect faces in an image.",
 };
 
 export default function RootLayout({
