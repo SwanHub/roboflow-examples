@@ -3,7 +3,10 @@ import Image from "next/image";
 
 export default function SiteFooter() {
   return (
-    <footer className="w-full border-t border-gray-200 mt-16 py-4 z-30 bottom-0 left-0 right-0 absolute bg-white">
+    <footer
+      className="w-full border-t border-gray-200 mt-16 py-4 z-30 bottom-0 left-0 right-0 fixed bg-white"
+      style={{ fontFamily: "var(--font-inter)" }}
+    >
       <div className="flex items-start gap-2 px-4 flex-wrap">
         <Link
           href="https://roboflow.com/?ref=roboflow-examples-face-detection.vercel.app"
