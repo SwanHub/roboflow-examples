@@ -1,26 +1,31 @@
-# Roboflow Templates
+# Roboflow Examples
 
 Live demo websites powered by [Roboflow Templates](https://templates.roboflow.com).
 
 ## List of sites
 
-- **[Remove Image Background](./remove-image-bg/)** - Automatically remove backgrounds from images using AI. Clone of the well-known site [remove.bg](https://remove.bg).
+- **[Remove Image Background](./remove-image-bg)** - Automatically remove backgrounds from images using AI. Clone of the well-known site [remove.bg](https://remove.bg).
 - **[Face Detection Test](./face-detection-test/)** - Simple Nextjs site to detect faces in an image. Upload an image and see the result.
 - **[Hot dog / Not hot dog](./hotdog-nothotdog/)** - Classify an image as "hot dog" or "not hot dog". Based on the Silicon Valley show meme.
 
 ## Getting Started
 
-1. **Clone or fork this repository**
+Each subfolder in this repo is its own independent, fully-functional Nextjs app that shows off a common computer vision use case. To spin up a local version of one of these websites, follow these instructions:
+
+1. **Clone this repository**
 
    ```bash
-   git clone https://github.com/roboflow/roboflow-templates.git
-   cd roboflow-templates
+   git clone https://github.com/SwanHub/roboflow-templates
    ```
 
-2. **Choose a template** and navigate to its directory
+2. **Extract one of the examples** and navigate inside.
 
    ```bash
-   cd repo-name-here
+   cp -r roboflow-templates/face-detection-test ./face-detection-test
+   cd face-detection-test
+   git init
+   git add .
+   git commit -m "Initial commit"
    ```
 
 3. **Install dependencies**
@@ -29,21 +34,27 @@ Live demo websites powered by [Roboflow Templates](https://templates.roboflow.co
    npm install
    ```
 
-4. **Test locally**
+4. **Create an env file with your Roboflow API key**
 
-   - Get your API key from Roboflow. [Instructions to find your API Key](https://docs.roboflow.com/developer/authentication/find-your-roboflow-api-key).
-   - Create a `.env.local` file and input there `ROBOFLOW_API_KEY=[YOUR_KEY_HERE]`
+[Find your Roboflow API key](https://docs.roboflow.com/developer/authentication/find-your-roboflow-api-key).
 
-5. **Run the development server**
+```bash
+echo "ROBOFLOW_API_KEY={YOUR_API_KEY_HERE}" > .env.local
+```
+
+5. **Replace inference endpoint**
+
+Look for `inferenceUrl` in the `api/{route_name}/route.tsx` file and replace it with YOUR inference endpoint. You can find this endpoint by:
+
+1. Signing into [Roboflow](https://app.roboflow.com)
+2. Navigating to Workflows > Your relevant workflow
+3. Click on the "Deploy" button, copy the `https://serverless.roboflow.com/infer...` endpoint and set `inferenceUrl` equal to that value.
+
+4. **Run the development server**
 
    ```bash
    npm run dev
    ```
-
-6. **Deploy to Vercel** (recommended)
-   - Connect your GitHub repository to [Vercel](https://vercel.com)
-   - Add your Roboflow API key as an environment variable
-   - Click "deploy"
 
 ## Contributing
 
