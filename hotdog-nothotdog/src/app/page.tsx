@@ -1,12 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import Header from "@/app/_components/Header";
-import ImageZone from "@/app/_components/ImageZone";
+import ImageZone from "@/app/ImageZone";
 
 export default function Home() {
-  const [apiKey, setApiKey] = useState<string>("");
-  const [showApiKeyModal, setShowApiKeyModal] = useState(false);
   const [imageZoneState, setImageZoneState] = useState<
     null | "evaluating" | "success" | "fail" | "camera"
   >(null);
@@ -28,12 +25,6 @@ export default function Home() {
 
   const handleImageUpload = async (file: File) => {
     try {
-      // Check if API key is set
-      if (apiKey === "") {
-        setShowApiKeyModal(true);
-        return;
-      }
-
       const url = URL.createObjectURL(file);
       setImageUrl(url);
       setImageZoneState("evaluating");
@@ -49,7 +40,6 @@ export default function Home() {
         },
         body: JSON.stringify({
           image: base64Image,
-          apiKey: apiKey,
         }),
       });
 
@@ -75,14 +65,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      <Header
-        apiKey={apiKey}
-        onApiKeyChange={setApiKey}
-        showApiKeyModal={showApiKeyModal}
-        onShowApiKeyModal={setShowApiKeyModal}
-      />
-
+    <main className="min-h-screen bg-white">
       <div className="container mx-auto px-4 py-8 mt-12">
         <div className="flex flex-col items-center space-y-6">
           <ImageZone
@@ -94,6 +77,6 @@ export default function Home() {
           />
         </div>
       </div>
-    </div>
+    </main>
   );
 }

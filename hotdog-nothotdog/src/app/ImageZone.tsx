@@ -1,6 +1,5 @@
 "use client";
 
-import { SVSpinner } from "@/components/Spinner";
 import Link from "next/link";
 import { useState, useRef, useCallback, useEffect } from "react";
 
@@ -377,9 +376,8 @@ const Overlay_Evaluating = ({ imageUrl }: { imageUrl?: string }) => (
       className="w-full h-full object-cover opacity-30"
     />
     <div className="absolute inset-0 flex flex-col items-center justify-center">
-      {/* Custom Silicon Valley spinner */}
       <div className="mb-8">
-        <SVSpinner />
+        <Spinner />
       </div>
       <div
         className="text-white text-5xl font-black tracking-wider"
@@ -541,6 +539,75 @@ const Overlay_Camera = ({
         >
           Back
         </button>
+      </div>
+    </div>
+  );
+};
+
+const Spinner = () => {
+  const circleCount = 12;
+  const circleRadius = 70;
+  const dotMinSize = 12;
+  const dotMaxSize = 28;
+
+  const getDotColor = (i: number) => {
+    // 0 = white, 1 = red
+    const t = i / (circleCount - 1);
+    const r = 255;
+    const g = Math.round(255 * (1 - t));
+    const b = Math.round(255 * (1 - t));
+    return `rgb(${r},${g},${b})`;
+  };
+
+  const getDotSize = (i: number) => {
+    const t = i / (circleCount - 1);
+    return dotMinSize + t * (dotMaxSize - dotMinSize);
+  };
+
+  return (
+    <div
+      className="relative"
+      style={{
+        width: circleRadius * 2 + dotMaxSize,
+        height: circleRadius * 2 + dotMaxSize,
+      }}
+    >
+      <div
+        className="absolute inset-0 flex items-center justify-center animate-spin"
+        style={{ animationDuration: "2.5s" }}
+      >
+        {Array.from({ length: circleCount }).map((_, i) => {
+          const angle = (i / circleCount) * 2 * Math.PI;
+          const size = getDotSize(i);
+          const color = getDotColor(i);
+          const x =
+            circleRadius +
+            circleRadius * Math.cos(angle) +
+            dotMaxSize / 2 -
+            size / 2;
+          const y =
+            circleRadius +
+            circleRadius * Math.sin(angle) +
+            dotMaxSize / 2 -
+            size / 2;
+          return (
+            <span
+              key={i}
+              style={{
+                position: "absolute",
+                left: x,
+                top: y,
+                width: size,
+                height: size,
+                borderRadius: "50%",
+                background: color,
+                boxShadow: "0 0 2px #0008",
+                border: "2px solid #000",
+                display: "block",
+              }}
+            />
+          );
+        })}
       </div>
     </div>
   );
