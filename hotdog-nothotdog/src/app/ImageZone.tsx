@@ -144,7 +144,7 @@ const Overlay_Empty = ({
           fontFamily: 'Impact, "Arial Black", sans-serif',
         }}
       >
-        SeeFood
+        Not Hotdog
       </h2>
       <p className="text-lg bg-white text-black font-impact">
         Inspired by{" "}
