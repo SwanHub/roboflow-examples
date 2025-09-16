@@ -1,11 +1,24 @@
-import { RoboflowLogo } from "./RoboflowLogo";
 import Link from "next/link";
 
 export default function SiteHeader() {
   return (
     <header className="fixed top-0 left-0 right-0 bg-white border-b border-gray-200 px-4 py-3 z-50">
       <div className="container mx-auto flex items-center justify-between">
-        <RoboflowLogo />
+        <div className="flex flex-row items-center relative">
+          <Link
+            href={"https://roboflow.com"}
+            className="flex w-full relative z-10"
+          >
+            <img
+              src={"/logos/roboflow-logo.png"}
+              alt="Roboflow Logo"
+              className="object-contain w-30 h-5.5"
+            />
+            <span className="absolute -top-3 -right-4 text-xs font-medium text-violet-600">
+              templates
+            </span>
+          </Link>
+        </div>
         <div className="flex items-center space-x-2">
           <p className="hidden sm:block pr-2 text-sm font-medium text-gray-400 whitespace-nowrap">
             Live demo

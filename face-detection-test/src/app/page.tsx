@@ -6,7 +6,7 @@ async function detectFaces(
   file: File
 ): Promise<{ annotatedImage: string; count: number }> {
   const reader = new FileReader();
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     reader.readAsDataURL(file);
     reader.onload = async () => {
       const base64 = (reader.result as string).split(",")[1];
@@ -16,6 +16,12 @@ async function detectFaces(
         body: JSON.stringify({ image: base64 }),
       });
       const result = await response.json();
+
+      if (!response.ok) {
+        reject(new Error(result.error || "Unknown error occurred"));
+        return;
+      }
+
       const annotatedImage = result.result.outputs[0].annotated_image.value;
       const count = result.result.outputs[0].count;
       resolve({ annotatedImage, count });
@@ -32,10 +38,19 @@ export default function Home() {
   const handleFileSelect = async (file: File) => {
     setInputImage(URL.createObjectURL(file));
     setIsLoading(true);
-    const result = await detectFaces(file);
-    setResultImage(result.annotatedImage);
-    setCount(result.count);
-    setIsLoading(false);
+    try {
+      const result = await detectFaces(file);
+      setResultImage(result.annotatedImage);
+      setCount(result.count);
+    } catch (error) {
+      alert(
+        error instanceof Error
+          ? error.message
+          : "An error occurred while detecting faces"
+      );
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const reset = () => {
