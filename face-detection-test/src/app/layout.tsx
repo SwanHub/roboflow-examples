@@ -11,7 +11,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Face Detection | Live Demo Roboflow Template",
+  title: "Roboflow Example App: Face Detection",
   description: "Test app using Roboflow, Next.js and Supabase",
 };
 

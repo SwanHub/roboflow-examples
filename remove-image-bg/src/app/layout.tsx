@@ -23,7 +23,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Remove Image Background - Free Online Tool",
+  title: "Roboflow Example App: Remove Image Background Clone",
   description:
     "Remove image backgrounds automatically and for free. Upload your image and get instant background removal with AI technology.",
 };
