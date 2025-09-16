@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import SiteHeader from "./SiteHeader";
 import SiteFooter from "./SiteFooter";
@@ -14,10 +14,16 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+});
+
 export const metadata: Metadata = {
-  title: "Hotdog or Nothotdog",
+  title: "Roboflow Example App: Hotdog or Nothotdog",
   description:
-    "Use image classification to determine if an image is a hotdog or not.",
+    "Roboflow Example app using CLIP to classify an image as a hotdog or not.",
 };
 
 export default function RootLayout({
@@ -28,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${inter.className} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <SiteHeader />
         {children}
