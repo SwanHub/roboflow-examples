@@ -3,56 +3,45 @@
 import { useState } from "react";
 import ImageZone from "@/app/ImageZone";
 
+async function classifyHotdog(file: File): Promise<string> {
+  const reader = new FileReader();
+  return new Promise((resolve, reject) => {
+    reader.readAsDataURL(file);
+    reader.onload = async () => {
+      const base64 = (reader.result as string).split(",")[1];
+      const response = await fetch("/api/classify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ image: base64 }),
+      });
+      const result = await response.json();
+
+      if (!response.ok) {
+        reject(new Error(result.error || "Unknown error occurred"));
+        return;
+      }
+
+      const mostSimilarClass =
+        result.result.outputs[0].clip_comparison.most_similar_class;
+      resolve(mostSimilarClass);
+    };
+  });
+}
+
 export default function Home() {
   const [imageZoneState, setImageZoneState] = useState<
     null | "evaluating" | "success" | "fail" | "camera"
   >(null);
   const [imageUrl, setImageUrl] = useState<string>("");
 
-  const convertToBase64 = (file: File): Promise<string> => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = () => {
-        const result = reader.result as string;
-        // Remove the data:image/jpeg;base64, prefix to get just the base64 string
-        const base64 = result.split(",")[1];
-        resolve(base64);
-      };
-      reader.onerror = reject;
-      reader.readAsDataURL(file);
-    });
-  };
-
   const handleImageUpload = async (file: File) => {
     try {
       const url = URL.createObjectURL(file);
       setImageUrl(url);
       setImageZoneState("evaluating");
-
-      // Convert image to base64
-      const base64Image = await convertToBase64(file);
-
-      // Send to backend
-      const response = await fetch("/api/classify", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          image: base64Image,
-        }),
-      });
-
-      const result = await response.json();
-
-      if (result.error) {
-        console.error("API Error:", result.error);
-        setImageZoneState("fail");
-      } else {
-        // Set state based on the result
-        const isHotdog = result.result === "hot dog";
-        setImageZoneState(isHotdog ? "success" : "fail");
-      }
+      const classification = await classifyHotdog(file);
+      const isHotdog = classification === "hot dog";
+      setImageZoneState(isHotdog ? "success" : "fail");
     } catch (error) {
       console.error("Error processing image:", error);
       setImageZoneState("fail");
