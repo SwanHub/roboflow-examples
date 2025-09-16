@@ -23,13 +23,13 @@ export default function SiteHeader() {
           </Link>
         </div>
         <div className="flex items-center space-x-2">
-          <p className="hidden sm:block pr-2 text-sm font-medium text-gray-400 whitespace-nowrap">
+          <p className="hidden sm:block pr-2 text-sm text-gray-500 whitespace-nowrap">
             Live demo
           </p>
           <Link
             href="https://github.com/SwanHub/roboflow-examples/tree/main/remove-image-bg"
             className="group flex items-center gap-2 px-3 py-2 bg-white hover:bg-black text-black hover:text-white
-      text-sm font-medium rounded-md transition-colors duration-200 cursor-pointer border border-gray-300"
+      text-sm rounded-md transition-colors duration-200 cursor-pointer border border-gray-300"
           >
             <img
               src="/icons/github.svg"
