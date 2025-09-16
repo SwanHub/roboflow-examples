@@ -25,6 +25,7 @@ async function classifyHotdog(file: File): Promise<string> {
         result.result.outputs[0].clip_comparison.most_similar_class;
       resolve(mostSimilarClass);
     };
+    reader.onerror = () => reject(new Error("Failed to read file"));
   });
 }
 

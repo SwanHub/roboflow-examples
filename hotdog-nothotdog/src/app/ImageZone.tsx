@@ -412,38 +412,72 @@ const Overlay_Camera = ({
 
   const startCamera = useCallback(async () => {
     try {
-      // Check browser support
       if (!navigator.mediaDevices?.getUserMedia) {
-        throw new Error(
-          "Camera access is not supported in your browser. Try using Chrome or Safari."
-        );
+        throw new Error("Camera access not supported");
       }
 
       const stream = await navigator.mediaDevices.getUserMedia({
         video: {
           width: { ideal: 375 },
           height: { ideal: 667 },
-          facingMode: "environment", // Use back camera on mobile
+          facingMode: "environment",
         },
       });
 
       if (videoRef.current) {
-        console.log("Setting video stream...");
-        videoRef.current.srcObject = stream;
+        const video = videoRef.current;
 
-        // Wait for video to be ready
-        await videoRef.current.play();
-        console.log("Video started playing");
+        if (video.srcObject) {
+          const existingStream = video.srcObject as MediaStream;
+          existingStream.getTracks().forEach((track) => track.stop());
+        }
+
+        video.srcObject = stream;
+
+        const videoReadyPromise = new Promise<void>((resolve, reject) => {
+          const onCanPlay = () => {
+            video.removeEventListener("canplay", onCanPlay);
+            video.removeEventListener("error", onError);
+            resolve();
+          };
+
+          const onError = () => {
+            video.removeEventListener("canplay", onCanPlay);
+            video.removeEventListener("error", onError);
+            reject(new Error("Video failed to load"));
+          };
+
+          video.addEventListener("canplay", onCanPlay);
+          video.addEventListener("error", onError);
+
+          if (video.readyState >= 3) {
+            onCanPlay();
+          }
+        });
+
+        await videoReadyPromise;
+
+        try {
+          await video.play();
+        } catch {
+          // Play interrupted, but continue - video might still work
+        }
 
         setIsCameraActive(true);
         setIsLoading(false);
         setError(null);
       }
-    } catch (err) {
-      const errorMessage = "Unable to start camera";
-      setError(errorMessage);
+    } catch {
+      setError("Unable to start camera");
       setIsLoading(false);
-      console.error("Camera error:", err);
+    }
+  }, []);
+
+  const stopCamera = useCallback(() => {
+    if (videoRef.current && videoRef.current.srcObject) {
+      const stream = videoRef.current.srcObject as MediaStream;
+      stream.getTracks().forEach((track) => track.stop());
+      videoRef.current.srcObject = null;
     }
   }, []);
 
@@ -453,34 +487,50 @@ const Overlay_Camera = ({
       const canvas = canvasRef.current;
       const context = canvas.getContext("2d");
 
+      if (
+        video.videoWidth === 0 ||
+        video.videoHeight === 0 ||
+        video.readyState < 2
+      ) {
+        return;
+      }
+
       if (context) {
         canvas.width = video.videoWidth;
         canvas.height = video.videoHeight;
         context.drawImage(video, 0, 0);
 
-        canvas.toBlob((blob) => {
-          if (blob) {
-            const file = new File([blob], "camera-photo.jpg", {
-              type: "image/jpeg",
-            });
-            onImageUpload(file);
-          }
-        }, "image/jpeg");
+        canvas.toBlob(
+          (blob) => {
+            if (blob) {
+              const file = new File([blob], "camera-photo.jpg", {
+                type: "image/jpeg",
+              });
+              // Stop camera after successful capture
+              stopCamera();
+              onImageUpload(file);
+            }
+          },
+          "image/jpeg",
+          0.9
+        );
       }
     }
-  }, [onImageUpload]);
+  }, [onImageUpload, stopCamera]);
 
   const handleBack = useCallback(() => {
-    if (videoRef.current && videoRef.current.srcObject) {
-      const stream = videoRef.current.srcObject as MediaStream;
-      stream.getTracks().forEach((track) => track.stop());
-    }
+    stopCamera();
     onReset?.();
-  }, [onReset]);
+  }, [onReset, stopCamera]);
 
-  // Start camera when component mounts
   useEffect(() => {
     startCamera();
+    return () => {
+      if (videoRef.current && videoRef.current.srcObject) {
+        const stream = videoRef.current.srcObject as MediaStream;
+        stream.getTracks().forEach((track) => track.stop());
+      }
+    };
   }, [startCamera]);
 
   return (
