@@ -58,7 +58,7 @@ export default function Header({
               )}
             </button>
           </div>
-          <CloneRepoButton repoUrl="https://github.com/SwanHub/roboflow-templates/tree/main/remove-image-bg" />
+          <CloneRepoButton repoUrl="https://github.com/SwanHub/roboflow-examples/tree/main/remove-image-bg" />
         </div>
       </div>
 

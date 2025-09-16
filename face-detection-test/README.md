@@ -6,7 +6,7 @@ Detect faces in an image.
 
 A simple example app demonstrating the use of [Roboflow Templates](https://templates.roboflow.com) in a live website.
 
-You can see and test out the live demo here: [Face Detection | Roboflow Examples](https://roboflow-templates-face-detection.vercel.app/).
+You can see and test out the live demo here: [Face Detection | Roboflow Examples](https://roboflow-examples-face-detection.vercel.app/).
 
 ## Tech Stack
 

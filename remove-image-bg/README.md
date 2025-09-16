@@ -6,7 +6,7 @@ Remove the background in an image.
 
 A simple example app demonstrating the use of [Roboflow Templates](https://templates.roboflow.com) in a live website.
 
-You can see and test out the live demo here: [Remove Bg Clone | Roboflow Examples](https://rf-templates-remove-image-bg.vercel.app/).
+You can see and test out the live demo here: [Remove Bg Clone | Roboflow Examples](https://roboflow-examples-remove-image-bg.vercel.app/).
 
 ## Tech Stack
 

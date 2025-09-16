@@ -6,7 +6,7 @@ Classify an image as hotdog or not hotdog.
 
 A simple example app demonstrating the use of [Roboflow Templates](https://templates.roboflow.com) in a live website.
 
-You can see and test out the live demo here: [Hotdog Not hotdog | Roboflow Examples](https://roboflow-templates-not-hotdog.vercel.app/).
+You can see and test out the live demo here: [Hotdog Not hotdog | Roboflow Examples](https://roboflow-examples-not-hotdog.vercel.app/).
 
 ## Tech Stack
 
