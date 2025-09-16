@@ -15,13 +15,13 @@ Each subfolder in this repo is its own independent, fully-functional Nextjs app 
 1. **Clone this repository**
 
    ```bash
-   git clone https://github.com/SwanHub/roboflow-templates
+   git clone https://github.com/SwanHub/roboflow-examples
    ```
 
 2. **Extract one of the examples** and navigate inside.
 
    ```bash
-   cp -r roboflow-templates/face-detection-test ./face-detection-test
+   cp -r roboflow-examples/face-detection-test ./face-detection-test
    cd face-detection-test
    git init
    git add .
