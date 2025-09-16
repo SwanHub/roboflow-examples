@@ -3,26 +3,17 @@
 import { useState } from "react";
 import GlobalDropzone from "@/_components/GlobalDropzone";
 import ImageEditor from "@/_components/ImageEditor";
-import Header from "@/_components/Header";
 import HeroLeft from "@/_components/HeroLeft";
 import ImageDropzone from "@/_components/ImageDropzone";
 import ImageExamples from "@/_components/ImageExamples";
 
 export default function Home() {
   const [droppedFile, setDroppedFile] = useState<File | null>(null);
-  const [apiKey, setApiKey] = useState<string>("");
   const [processedImage, setProcessedImage] = useState<string | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
-  const [showApiKeyModal, setShowApiKeyModal] = useState(false);
   const [showOriginal, setShowOriginal] = useState(false);
 
   const handleImageDrop = async (file: File) => {
-    if (apiKey === "") {
-      setShowApiKeyModal(true);
-      return;
-    }
-    console.log("Image dropped:", file.name);
-
     const validImageTypes = [
       "image/jpeg",
       "image/jpg",
@@ -56,7 +47,6 @@ export default function Home() {
         },
         body: JSON.stringify({
           image: base64,
-          apiKey: apiKey,
         }),
       });
 
@@ -98,12 +88,6 @@ export default function Home() {
   return (
     <GlobalDropzone onImageDrop={handleImageDrop}>
       <div className="min-h-screen bg-white">
-        <Header
-          apiKey={apiKey}
-          onApiKeyChange={setApiKey}
-          showApiKeyModal={showApiKeyModal}
-          onShowApiKeyModal={setShowApiKeyModal}
-        />
         {droppedFile ? (
           <div className="pt-16">
             <ImageEditor

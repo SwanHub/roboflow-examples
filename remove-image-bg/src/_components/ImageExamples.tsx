@@ -4,10 +4,10 @@ interface ImageExamplesProps {
 
 export default function ImageExamples({ onImageSelect }: ImageExamplesProps) {
   const exampleImages = [
-    { src: "/examples/dogs.jpg", alt: "Dogs" },
-    { src: "/examples/cats.jpg", alt: "Cats" },
-    { src: "/examples/airplane.jpg", alt: "Airplane" },
-    { src: "/examples/stopsign.jpg", alt: "Stop Sign" },
+    { src: "/example-images/dogs.jpg", alt: "Dogs" },
+    { src: "/example-images/cats.jpg", alt: "Cats" },
+    { src: "/example-images/airplane.jpg", alt: "Airplane" },
+    { src: "/example-images/stopsign.jpg", alt: "Stop Sign" },
   ];
 
   const handleImageClick = async (imageSrc: string, alt: string) => {
