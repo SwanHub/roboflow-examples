@@ -12,29 +12,29 @@ Live demo websites powered by [Roboflow Templates](https://templates.roboflow.co
 
 Each subfolder in this repo is its own independent, fully-functional Nextjs app that shows off a common computer vision use case. To spin up a local version of one of these websites, follow these instructions:
 
-1. **Clone this repository**
+**Clone this repository**
 
-   ```bash
-   git clone https://github.com/SwanHub/roboflow-examples
-   ```
+```bash
+git clone https://github.com/SwanHub/roboflow-examples
+```
 
-2. **Extract one of the examples** and navigate inside.
+**Extract one of the examples** and navigate inside.
 
-   ```bash
-   cp -r roboflow-examples/face-detection-test ./face-detection-test
-   cd face-detection-test
-   git init
-   git add .
-   git commit -m "Initial commit"
-   ```
+```bash
+cp -r roboflow-examples/face-detection-test ./face-detection-test
+cd face-detection-test
+git init
+git add .
+git commit -m "Initial commit"
+```
 
-3. **Install dependencies**
+**Install dependencies**
 
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+```
 
-4. **Create an env file with your Roboflow API key**
+**Create an env file with your Roboflow API key**
 
 [Find your Roboflow API key](https://docs.roboflow.com/developer/authentication/find-your-roboflow-api-key).
 
@@ -42,7 +42,7 @@ Each subfolder in this repo is its own independent, fully-functional Nextjs app 
 echo "ROBOFLOW_API_KEY={YOUR_API_KEY_HERE}" > .env.local
 ```
 
-5. **Replace inference endpoint**
+**Replace inference endpoint**
 
 Look for `inferenceUrl` in the `api/{route_name}/route.tsx` file and replace it with YOUR inference endpoint. You can find this endpoint by:
 
@@ -50,11 +50,11 @@ Look for `inferenceUrl` in the `api/{route_name}/route.tsx` file and replace it 
 2. Navigating to Workflows > Your relevant workflow
 3. Click on the "Deploy" button, copy the `https://serverless.roboflow.com/infer...` endpoint and set `inferenceUrl` equal to that value.
 
-4. **Run the development server**
+**Run the development server**
 
-   ```bash
-   npm run dev
-   ```
+```bash
+npm run dev
+```
 
 ## Contributing
 
