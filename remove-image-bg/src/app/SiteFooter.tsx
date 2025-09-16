@@ -3,10 +3,13 @@ import Image from "next/image";
 
 export default function SiteFooter() {
   return (
-    <footer className="w-full border-t border-gray-200 mt-16 py-4 z-30 bottom-0 left-0 right-0 absolute bg-white">
+    <footer
+      className="w-full border-t border-gray-200 mt-16 py-4 z-30 bottom-0 left-0 right-0 absolute bg-white"
+      style={{ fontFamily: "var(--font-inter)" }}
+    >
       <div className="flex items-start gap-2 px-4 flex-wrap">
         <Link
-          href="https://roboflow.com/?ref=templates.roboflow.com"
+          href="https://roboflow.com/?ref=roboflow-examples-remove-image-bg.vercel.app"
           target="_blank"
           rel="noopener noreferrer"
           className="focus:outline-none focus:ring-2 focus:ring-blue-500 rounded flex items-center gap-2 hover:underline"
@@ -24,7 +27,7 @@ export default function SiteFooter() {
           </span>
         </Link>
         <Link
-          href="https://nextjs.org?ref=templates.roboflow.com"
+          href="https://nextjs.org?ref=roboflow-examples-remove-image-bg.vercel.app"
           target="_blank"
           rel="noopener noreferrer"
           className="focus:outline-none focus:ring-2 focus:ring-blue-500 rounded flex items-center gap-2 hover:underline"
@@ -43,7 +46,7 @@ export default function SiteFooter() {
         </Link>
 
         <Link
-          href="https://vercel.com/?ref=templates.roboflow.com"
+          href="https://vercel.com/?ref=roboflow-examples-remove-image-bg.vercel.app"
           target="_blank"
           rel="noopener noreferrer"
           className="focus:outline-none focus:ring-2 focus:ring-blue-500 rounded flex items-center gap-2 hover:underline"

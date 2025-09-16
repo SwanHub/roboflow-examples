@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Poppins, Work_Sans } from "next/font/google";
+import { Poppins, Work_Sans, Inter } from "next/font/google";
 import "./globals.css";
 import SiteHeader from "./SiteHeader";
 import SiteFooter from "./SiteFooter";
@@ -16,6 +16,12 @@ const workSans = Work_Sans({
   weight: ["300", "400", "500", "600", "700", "800"],
 });
 
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+});
+
 export const metadata: Metadata = {
   title: "Remove Image Background - Free Online Tool",
   description:
@@ -29,7 +35,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${workSans.className} ${poppins.variable} antialiased`}>
+      <body
+        className={`${workSans.className} ${poppins.variable} ${inter.variable} antialiased`}
+      >
         <SiteHeader />
         {children}
         <SiteFooter />
