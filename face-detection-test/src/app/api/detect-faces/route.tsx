@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
      * For example: https://serverless.roboflow.com/infer/workflows/{your_workspace_name}/{your_workflow_slug}
      */
     const response = await fetch(
-      "https://serverless.roboflow.com/infer/workflows/face-detection-test/detect-faces",
+      "https://serverless.roboflow.com/infer/workflows/templates/detect-faces",
       {
         method: "POST",
         headers: {
