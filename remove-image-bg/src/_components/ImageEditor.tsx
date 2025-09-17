@@ -172,38 +172,22 @@ const Skeleton = () => {
           className="w-full h-full"
           style={{
             backgroundImage: `
-                      linear-gradient(45deg, #666 25%, transparent 25%), 
-                      linear-gradient(-45deg, #666 25%, transparent 25%), 
-                      linear-gradient(45deg, transparent 75%, #666 75%), 
-                      linear-gradient(-45deg, transparent 75%, #666 75%)
-                    `,
+              linear-gradient(45deg, #666 25%, transparent 25%), 
+              linear-gradient(-45deg, #666 25%, transparent 25%), 
+              linear-gradient(45deg, transparent 75%, #666 75%), 
+              linear-gradient(-45deg, transparent 75%, #666 75%)
+            `,
             backgroundSize: "20px 20px",
             backgroundPosition: "0 0, 0 10px, 10px -10px, -10px 0px",
           }}
         />
       </div>
 
-      <div className="absolute inset-0">
-        {[...Array(15)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute text-yellow-400 animate-pulse duration-75"
-            style={{
-              left: `${Math.random() * 80 + 10}%`,
-              top: `${Math.random() * 80 + 10}%`,
-              fontSize: `${Math.random() * 12 + 8}px`,
-              transform: `rotate(${Math.random() * 360}deg)`,
-              animationDelay: `${Math.random() * 2}s`,
-              animationDuration: `${1 + Math.random() * 2}s`,
-            }}
-          >
-            ★
-          </div>
-        ))}
-      </div>
-
-      <div className="flex flex-col items-center justify-center space-y-4 relative z-10 bg-black/20 px-4 py-1 rounded-full">
-        <p className="text-lg text-white">Removing background...</p>
+      <div className="flex flex-col items-center justify-center space-y-4 relative z-10">
+        <div className="w-8 h-8 border-3 border-white border-t-transparent rounded-full animate-spin"></div>
+        <p className="text-lg text-white bg-black/20 px-4 py-2 rounded-full">
+          Removing background...
+        </p>
       </div>
     </div>
   );
